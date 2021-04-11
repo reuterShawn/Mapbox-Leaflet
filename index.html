@@ -24,6 +24,44 @@
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoicmV1dGUwNzgiLCJhIjoiY2tuY2RscmYzMTZmOTJ1bWwwaWtydzY2eCJ9.kdIn-cM9T4ddYklxqHi24w'
     }).addTo(mymap);
+     
+     var cities =[
+      {"type":"Feature","properties":{"name":"Rochester MN"},"show_on_map":true,"popupContent":"Rochester MN"}
+      ,"geometry":{"type":"Point","coordinates":[-92.4802,44.0121]}},{"type":
+      
+      function circleConvert(feature,latlng){ // Turns GeoJSON points into circle markers
+       return new L.CircleMarker(latlng, {radius: 5, color: '#FF0000'})
+      }
+      
+      function onEachFeature(feature, layer) { // produces popups
+       // does this feature have ea property named popupContent?
+       if (feature.properties && feature.properties.popupContent) {
+           layer.bindPopup(feature.properties.popupContent);
+       }
+      }
+                                                                      
+      var layerProcessing = {
+       pointToLayer: circleConvert,
+       onEachFeature: onEachFeature
+      }
+      
+      var cityLayer = L.geoJSON(cities, layerProcessing).addTo(mymap);
+                                                                      
+      
+                                                                      
+      var path = [[44.0121,-92.4802],[43.623255,-95.59604],[47.7504,-90.3343],[46.8772,-96.7898],[48.8461,-95.7628],[44.913815,-93.17459],46.7867,-92.1005],[47.504496,-94.87105],[45.584124,-95.9092],[45.5579,-94.1632],[44.9782,-93.2554],[44.0121,-92.4802]];
+      
+      var lineStyle={
+       "dashArray": [
+        10,
+        20
+       ],
+       "weight": 5,
+       "color": "#FFFFFF"
+      }
+      
+      L.polyline(path,fillStyle).addTo(mymap);
+      L.polyline(path,lineStyle).addTo(mymap);                                                                
     </script>
 </body>
 </html>
