@@ -20,14 +20,9 @@
     
     
     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoicmV1dGUwNzgiLCJhIjoiY2tuY2RscmYzMTZmOTJ1bWwwaWtydzY2eCJ9.kdIn-cM9T4ddYklxqHi24w'
-    }).addTo(mymap);
+ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(mymap);
      
    var cities=[{"type":"Feature","properties":{"name":"Rochester, MN","show_on_map":true,"popupContent":"Rochester, MN"},"geometry":{"type":"Point","coordinates":[-92.4802,44.0121]}},
             {"type":"Feature","properties":{"name":"Worthington, MN","show_on_map":true,"popupContent":"Worthington, MN"},"geometry":{"type":"Point","coordinates":[-95.59604,43.623255]}},
